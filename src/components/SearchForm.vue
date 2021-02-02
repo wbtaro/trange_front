@@ -1,13 +1,13 @@
 <template>
   <div>
-  <form>
-    <!-- <input type="text" v-model="searchCondition.station" @input="reflectSearchCondition"> -->
-    <input type="text" v-model="searchCondition.station">
-    <span>駅から</span>
-    <!-- <input type="text" v-model="searchCondition.upperMinute" @input="reflectSearchCondition"> -->
-    <input type="text" v-model="searchCondition.upperMinute">
-    <span>分以内</span>
-  </form>
+    <form>
+      <!-- <input type="text" v-model="searchCondition.station" @input="reflectSearchCondition"> -->
+      <input type="text" v-model="searchCondition.station" />
+      <span>駅から</span>
+      <!-- <input type="text" v-model="searchCondition.upperMinute" @input="reflectSearchCondition"> -->
+      <input type="text" v-model="searchCondition.upperMinute" />
+      <span>分以内</span>
+    </form>
   </div>
 </template>
 
@@ -24,5 +24,5 @@ export default defineComponent({
     //   context.emit("inputConditions")
     // }
   }
-})
+});
 </script>

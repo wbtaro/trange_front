@@ -9,10 +9,7 @@
     >
     </searchForm>
     <p>
-      <button
-        @click="addSearchCondition"
-        ref="addConditionButton"
-      >
+      <button @click="addSearchCondition" ref="addConditionButton">
         条件を追加
       </button>
       <button
@@ -31,7 +28,7 @@ import { defineComponent } from "@vue/composition-api";
 import SearchForm from "@/components/SearchForm.vue";
 
 class SearchCondition {
-  constructor(){
+  constructor() {
     this.station = "";
     this.upperMinute = "";
   }
@@ -39,34 +36,34 @@ class SearchCondition {
 
 export default defineComponent({
   components: {
-    'search-form': SearchForm
+    "search-form": SearchForm
   },
-  data(){
+  data() {
     return {
       searchConditions: [new SearchCondition()],
       maxConditionNum: 4,
       minConditionNum: 1
-    }
+    };
   },
   methods: {
-    addSearchCondition: function(){
+    addSearchCondition: function() {
       this.searchConditions.push(new SearchCondition());
       if (this.searchConditions.length == this.maxConditionNum) {
         this.$refs.addConditionButton.disabled = true;
       }
-      if (this.searchConditions.length > this.minConditionNum){
+      if (this.searchConditions.length > this.minConditionNum) {
         this.$refs.deleteConditionButton.disabled = false;
       }
     },
-    deleteSearchCondition: function(){
+    deleteSearchCondition: function() {
       this.searchConditions.pop();
-      if (this.searchConditions.length < this.maxConditionNum){
+      if (this.searchConditions.length < this.maxConditionNum) {
         this.$refs.addConditionButton.disabled = false;
       }
-      if (this.searchConditions.length == this.minConditionNum){
+      if (this.searchConditions.length == this.minConditionNum) {
         this.$refs.deleteConditionButton.disabled = true;
       }
     }
   }
-})
+});
 </script>
