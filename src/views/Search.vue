@@ -20,17 +20,29 @@
         条件を削除
       </button>
     </p>
+    <p>
+      <button @click="rangeSearch">検索</button>
+    </p>
+    {{ result }}
   </div>
 </template>
 
 <script>
 import { defineComponent } from "@vue/composition-api";
 import SearchForm from "@/components/SearchForm.vue";
+import axios from "axios";
 
 class SearchCondition {
   constructor() {
     this.station = "";
     this.upperMinute = "";
+  }
+
+  getConditionInAPIForm() {
+    return {
+      BaseStationName: this.station,
+      UpperMinute: this.upperMinute
+    };
   }
 }
 
@@ -42,7 +54,8 @@ export default defineComponent({
     return {
       searchConditions: [new SearchCondition()],
       maxConditionNum: 4,
-      minConditionNum: 1
+      minConditionNum: 1,
+      result: undefined
     };
   },
   methods: {
@@ -63,6 +76,16 @@ export default defineComponent({
       if (this.searchConditions.length == this.minConditionNum) {
         this.$refs.deleteConditionButton.disabled = true;
       }
+    },
+    rangeSearch: async function() {
+      let body = { SearchConditions: [] };
+      for (const condition of this.searchConditions) {
+        body["SearchConditions"].push(condition.getConditionInAPIForm());
+      }
+      this.result = await axios.post(
+        "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/range_search",
+        body
+      );
     }
   }
 });
