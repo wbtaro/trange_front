@@ -9,7 +9,10 @@
     >
     </searchForm>
     <p>
-      <button @click="addSearchCondition" ref="addConditionButton">
+      <button
+        @click="addSearchCondition"
+        ref="addConditionButton"
+      >
         条件を追加
       </button>
       <button
@@ -85,7 +88,7 @@ export default defineComponent({
       this.result = await axios.post(
         "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/range_search",
         body
-      );
+      )
     }
   }
 });
