@@ -1,5 +1,6 @@
 <template>
   <div>
+    <label>条件{{ index + 1 }}：</label>
     <form>
       <input type="text" v-model="searchCondition.station" />
       <span>駅から</span>

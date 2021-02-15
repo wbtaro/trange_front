@@ -1,37 +1,43 @@
 <template>
   <div>
-    <searchForm
-      is="search-form"
-      v-for="(searchCondition, index) in searchConditions"
-      :key="index"
-      :index="index"
-      :searchCondition="searchCondition"
-    >
-    </searchForm>
-    <p>
-      <button
-        @click="addSearchCondition"
-        ref="addConditionButton"
+    <div>
+      <h2>検索条件</h2>
+      <searchForm
+        is="search-form"
+        v-for="(searchCondition, index) in searchConditions"
+        :key="index"
+        :index="index"
+        :searchCondition="searchCondition"
       >
-        条件を追加
-      </button>
-      <button
-        @click="deleteSearchCondition"
-        ref="deleteConditionButton"
-        disabled
+      </searchForm>
+      <p>
+        <button
+          @click="addSearchCondition"
+          ref="addConditionButton"
+        >
+          条件を追加
+        </button>
+        <button
+          @click="deleteSearchCondition"
+          ref="deleteConditionButton"
+          disabled
+        >
+          条件を削除
+        </button>
+      </p>
+      <p>
+        <button @click="rangeSearch">駅を探す</button>
+      </p>
+    </div>
+    <div v-if="results">
+      <h2>検索結果</h2>
+      <result
+        is="result"
+        :results="results"
+        :executedSearchConditions="executedSearchConditions"
       >
-        条件を削除
-      </button>
-    </p>
-    <p>
-      <button @click="rangeSearch">検索</button>
-    </p>
-    <searchForm
-      v-if="result"
-      is="result"
-      :result="result"
-    >
-    </searchForm>
+      </result>
+    </div>
   </div>
 </template>
 
@@ -40,6 +46,7 @@ import { defineComponent } from "@vue/composition-api";
 import SearchForm from "@/components/SearchForm.vue";
 import Result from "@/components/Result.vue";
 import axios from "axios";
+import _ from "lodash"
 
 class SearchCondition {
   constructor() {
@@ -65,7 +72,8 @@ export default defineComponent({
       searchConditions: [new SearchCondition()],
       maxConditionNum: 4,
       minConditionNum: 1,
-      result: undefined
+      results: undefined,
+      executedSearchConditions: undefined
     };
   },
   methods: {
@@ -96,7 +104,8 @@ export default defineComponent({
         "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/range_search",
         body
       )
-      this.result = response.data
+      this.results = response.data
+      this.executedSearchConditions = _.cloneDeep(this.searchConditions)
     }
   }
 });
