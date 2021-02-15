@@ -26,13 +26,19 @@
     <p>
       <button @click="rangeSearch">検索</button>
     </p>
-    {{ result }}
+    <searchForm
+      v-if="result"
+      is="result"
+      :result="result"
+    >
+    </searchForm>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "@vue/composition-api";
 import SearchForm from "@/components/SearchForm.vue";
+import Result from "@/components/Result.vue";
 import axios from "axios";
 
 class SearchCondition {
@@ -51,7 +57,8 @@ class SearchCondition {
 
 export default defineComponent({
   components: {
-    "search-form": SearchForm
+    "search-form": SearchForm,
+    "result": Result
   },
   data() {
     return {
@@ -85,10 +92,11 @@ export default defineComponent({
       for (const condition of this.searchConditions) {
         body["SearchConditions"].push(condition.getConditionInAPIForm());
       }
-      this.result = await axios.post(
+      let response = await axios.post(
         "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/range_search",
         body
       )
+      this.result = response.data
     }
   }
 });
