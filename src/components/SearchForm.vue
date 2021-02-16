@@ -17,6 +17,6 @@ export default defineComponent({
   props: {
     searchCondition: Object,
     index: Number
-  },
+  }
 });
 </script>
