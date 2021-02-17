@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div class="container text-center">
       <h2>検索条件</h2>
       <searchForm
         is="search-form"
@@ -31,7 +31,7 @@
         <b-button @click="rangeSearch" variant="primary">駅を探す</b-button>
       </p>
     </div>
-    <div v-if="results">
+    <div v-if="results" class="container text-center">
       <h2>検索結果</h2>
       <result
         is="result"
