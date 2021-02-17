@@ -1,44 +1,48 @@
 <template>
-  <div class="container">
-    <div class="container text-center">
-      <h2>検索条件</h2>
-      <searchForm
-        is="search-form"
-        v-for="(searchCondition, index) in searchConditions"
-        :key="index"
-        :index="index"
-        :searchCondition="searchCondition"
-      >
-      </searchForm>
-      <p>
-        <button
-          @click="addSearchCondition"
-          ref="addConditionButton"
-          class="btn btn-outline-dark"
+  <div>
+    <div class="container-fluid text-center bg-light p-4">
+      <section id="search-condition">
+        <h2 class="mb-3">検索条件</h2>
+        <searchForm
+          is="search-form"
+          v-for="(searchCondition, index) in searchConditions"
+          :key="index"
+          :index="index"
+          :searchCondition="searchCondition"
         >
-          条件を追加
-        </button>
-        <button
-          @click="deleteSearchCondition"
-          ref="deleteConditionButton"
-          class="btn btn-outline-dark"
-          disabled
-        >
-          条件を削除
-        </button>
-      </p>
-      <p>
-        <b-button @click="rangeSearch" variant="primary">駅を探す</b-button>
-      </p>
+        </searchForm>
+        <p>
+          <button
+            @click="addSearchCondition"
+            ref="addConditionButton"
+            class="btn btn-secondary btn-sm"
+          >
+            条件を追加
+          </button>
+          <button
+            @click="deleteSearchCondition"
+            ref="deleteConditionButton"
+            class="btn btn-secondary btn-sm"
+            disabled
+          >
+            条件を削除
+          </button>
+        </p>
+        <p>
+          <b-button @click="rangeSearch" variant="primary">駅を探す</b-button>
+        </p>
+      </section>
     </div>
     <div v-if="results" class="container text-center">
-      <h2>検索結果</h2>
-      <result
-        is="result"
-        :results="results"
-        :executedSearchConditions="executedSearchConditions"
-      >
-      </result>
+      <section id="search-result">
+        <h2>検索結果</h2>
+        <result
+          is="result"
+          :results="results"
+          :executedSearchConditions="executedSearchConditions"
+        >
+        </result>
+      </section>
     </div>
   </div>
 </template>
