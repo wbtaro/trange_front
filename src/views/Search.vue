@@ -1,42 +1,48 @@
 <template>
   <div>
-    <div>
-      <h2>検索条件</h2>
-      <searchForm
-        is="search-form"
-        v-for="(searchCondition, index) in searchConditions"
-        :key="index"
-        :index="index"
-        :searchCondition="searchCondition"
-      >
-      </searchForm>
-      <p>
-        <button
-          @click="addSearchCondition"
-          ref="addConditionButton"
+    <div class="container-fluid text-center bg-light p-4">
+      <section id="search-condition">
+        <h2 class="mb-3">検索条件</h2>
+        <searchForm
+          is="search-form"
+          v-for="(searchCondition, index) in searchConditions"
+          :key="index"
+          :index="index"
+          :searchCondition="searchCondition"
         >
-          条件を追加
-        </button>
-        <button
-          @click="deleteSearchCondition"
-          ref="deleteConditionButton"
-          disabled
-        >
-          条件を削除
-        </button>
-      </p>
-      <p>
-        <button @click="rangeSearch">駅を探す</button>
-      </p>
+        </searchForm>
+        <p>
+          <button
+            @click="addSearchCondition"
+            ref="addConditionButton"
+            class="btn btn-secondary btn-sm"
+          >
+            条件を追加
+          </button>
+          <button
+            @click="deleteSearchCondition"
+            ref="deleteConditionButton"
+            class="btn btn-secondary btn-sm"
+            disabled
+          >
+            条件を削除
+          </button>
+        </p>
+        <p>
+          <b-button @click="rangeSearch" variant="primary">駅を探す</b-button>
+        </p>
+      </section>
     </div>
-    <div v-if="results">
-      <h2>検索結果</h2>
-      <result
-        is="result"
-        :results="results"
-        :executedSearchConditions="executedSearchConditions"
-      >
-      </result>
+    <div v-if="results" class="container text-center">
+      <section id="search-result">
+        <h2>検索結果</h2>
+        <result
+          is="result"
+          :results="results"
+          :executedSearchConditions="executedSearchConditions"
+        >
+        </result>
+      </section>
     </div>
   </div>
 </template>
@@ -46,7 +52,7 @@ import { defineComponent } from "@vue/composition-api";
 import SearchForm from "@/components/SearchForm.vue";
 import Result from "@/components/Result.vue";
 import axios from "axios";
-import _ from "lodash"
+import _ from "lodash";
 
 class SearchCondition {
   constructor() {
@@ -65,7 +71,7 @@ class SearchCondition {
 export default defineComponent({
   components: {
     "search-form": SearchForm,
-    "result": Result
+    result: Result
   },
   data() {
     return {
@@ -103,9 +109,9 @@ export default defineComponent({
       let response = await axios.post(
         "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/range_search",
         body
-      )
-      this.results = response.data
-      this.executedSearchConditions = _.cloneDeep(this.searchConditions)
+      );
+      this.results = response.data;
+      this.executedSearchConditions = _.cloneDeep(this.searchConditions);
     }
   }
 });
