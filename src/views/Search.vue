@@ -15,14 +15,14 @@
           <button
             @click="addSearchCondition"
             ref="addConditionButton"
-            class="btn btn-secondary btn-sm"
+            class="btn btn-secondary btn-sm mx-2"
           >
             条件を追加
           </button>
           <button
             @click="deleteSearchCondition"
             ref="deleteConditionButton"
-            class="btn btn-secondary btn-sm"
+            class="btn btn-secondary btn-sm mx-2"
             disabled
           >
             条件を削除
