@@ -2,7 +2,7 @@
   <div>
     <div class="container-fluid text-center bg-light p-4">
       <section id="search-condition">
-        <h2 class="mb-3">検索条件</h2>
+        <h2 class="mb-3 h3">検索条件</h2>
         <searchForm
           is="search-form"
           v-for="(searchCondition, index) in searchConditions"
@@ -15,27 +15,33 @@
           <button
             @click="addSearchCondition"
             ref="addConditionButton"
-            class="btn btn-secondary btn-sm"
+            class="btn btn-secondary btn-sm mx-2"
           >
             条件を追加
           </button>
           <button
             @click="deleteSearchCondition"
             ref="deleteConditionButton"
-            class="btn btn-secondary btn-sm"
+            class="btn btn-secondary btn-sm mx-2"
             disabled
           >
             条件を削除
           </button>
         </p>
         <p>
-          <b-button @click="rangeSearch" variant="primary">駅を探す</b-button>
+          <button
+            @click="rangeSearch"
+            variant="primary"
+            class="btn btn-primary btn-lg mt-4"
+          >
+            駅を探す
+          </button>
         </p>
       </section>
     </div>
     <div v-if="results" class="container text-center">
       <section id="search-result">
-        <h2>検索結果</h2>
+        <h2 class="my-4 h3">検索結果</h2>
         <result
           is="result"
           :results="results"
