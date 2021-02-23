@@ -17,7 +17,9 @@
           :key="resultIndex"
           class="card pt-2 mb-4 border-secondary bg-light"
         >
-          <h3 class="card-title h4 font-weight-bold">{{ result.Station.Name }}</h3>
+          <h3 class="card-title h4 font-weight-bold">
+            {{ result.Station.Name }}
+          </h3>
           <ul class="list-group list-group-flush">
             <li
               v-for="(cost, conditionIndex) in result.Cost"
