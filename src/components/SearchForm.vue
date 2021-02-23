@@ -4,14 +4,16 @@
     <form class="form-inline">
       <input
         type="text"
+        placeholder="東京"
         v-model="searchCondition.station"
         class="form-control"
       />
       <span>駅から</span>
       <input
         type="text"
-        size="3"
+        size="4"
         maxlength="3"
+        placeholder="30"
         v-model="searchCondition.upperMinute"
         class="form-control"
       />
