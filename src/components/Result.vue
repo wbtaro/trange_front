@@ -1,7 +1,7 @@
 <template>
-  <div class="container text-center">
-    <div>
-      <p v-if="results.ErrorMessage" class="alert alert-danger">
+  <div class="container">
+    <div class="containter-fluid row justify-content-center">
+      <p v-if="results.ErrorMessage" class="alert alert-danger col-md-8">
         {{ results.ErrorMessage }}
       </p>
     </div>

@@ -34,7 +34,7 @@
             variant="primary"
             class="btn btn-primary btn-lg mt-4"
           >
-            駅を探す
+            検索 
           </button>
         </p>
       </section>
