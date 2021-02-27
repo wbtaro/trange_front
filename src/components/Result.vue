@@ -1,7 +1,7 @@
 <template>
-  <div class="container text-center">
-    <div>
-      <p v-if="results.ErrorMessage" class="alert alert-danger">
+  <div class="container">
+    <div class="containter-fluid row justify-content-center">
+      <p v-if="results.ErrorMessage" class="alert alert-danger col-md-8">
         {{ results.ErrorMessage }}
       </p>
     </div>
@@ -17,7 +17,9 @@
           :key="resultIndex"
           class="card pt-2 mb-4 border-secondary bg-light"
         >
-          <h3 class="card-title h4 font-weight-bold">{{ result.Station.Name }}</h3>
+          <h3 class="card-title h4 font-weight-bold">
+            {{ result.Station.Name }}
+          </h3>
           <ul class="list-group list-group-flush">
             <li
               v-for="(cost, conditionIndex) in result.Cost"

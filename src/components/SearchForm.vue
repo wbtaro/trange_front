@@ -1,6 +1,8 @@
 <template>
   <div class="form-group row justify-content-center">
-    <label class="col-form-label">条件{{ index + 1 }}：</label>
+    <label class="col-form-label">
+      <span class="badge bg-dark mr-2 text-light">条件{{ index + 1 }}</span>
+    </label>
     <form class="form-inline">
       <input
         type="text"
@@ -8,7 +10,7 @@
         v-model="searchCondition.station"
         class="form-control"
       />
-      <span>駅から</span>
+      <span class="mx-2">駅から</span>
       <input
         type="text"
         size="4"
@@ -17,7 +19,7 @@
         v-model="searchCondition.upperMinute"
         class="form-control"
       />
-      <span>分以内</span>
+      <span class="mx-2">分以内</span>
     </form>
   </div>
 </template>
