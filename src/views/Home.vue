@@ -3,7 +3,7 @@
     <div class="container-fluid bg-light">
       <div class="mx-auto py-5 justify-content-center text-center">
         <section>
-          <p class="h1 mb-4 font-weight-bold">Train×Range</p>
+          <p class="h1 mb-4 font-weight-bold">えきまる</p>
           <p class="mb-2">
             起点駅から指定した時間内に到着できる駅を検索できるサービスです
           </p>

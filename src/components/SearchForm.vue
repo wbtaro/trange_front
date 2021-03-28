@@ -55,19 +55,13 @@ export default defineComponent({
     incrementalSearch: async function() {
       if (
         !this.incrementalSearchExecutable || //検索実行権(=別のタイミングで実施中)がないとき
-        !this.searchCondition.station || //検索フォームが空の場合
-        (this.possibleStations.length === 1 &&
-          this.searchCondition.station in this.possibleStations) // 検索候補から選んだものがすでにフォームに入っている時
+        !this.searchCondition.station //検索フォームが空の場合
       ) {
         return;
       }
 
       this.incrementalSearchExecutable = false;
       let response = await axios.get(
-        "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/incremental_search?baseStationName=" +
-          this.searchCondition.station
-      );
-      console.log(
         "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/incremental_search?baseStationName=" +
           this.searchCondition.station
       );
