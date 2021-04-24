@@ -34,7 +34,7 @@
             variant="primary"
             class="btn btn-primary btn-lg mt-4"
           >
-            検索 
+            検索
           </button>
         </p>
       </section>
