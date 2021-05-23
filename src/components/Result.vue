@@ -6,11 +6,7 @@
       </p>
     </div>
     <div v-if="results.Stations" class="row justify-content-center">
-      <!-- <h3>指定された条件</h3>
-      <ul v-for="(condition, index) in executedSearchConditions" :key="index">
-        <li>{{ condition.station }}から{{ condition.upperMinute }}分</li>
-      </ul>
-      <h3>条件を満たす駅</h3> -->
+      <p>{{ results.Stations.length }}件</p>
       <div class="col-md-8">
         <div
           v-for="(result, resultIndex) in results.Stations"
