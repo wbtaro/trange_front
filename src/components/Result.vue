@@ -6,7 +6,7 @@
       </p>
     </div>
     <div v-if="results.Stations" class="row justify-content-center">
-      <p>{{ results.Stations.length }}件</p>
+      <p class="col-md-8">{{ results.Stations.length }}件</p>
       <div class="col-md-8">
         <div
           v-for="(result, resultIndex) in results.Stations"

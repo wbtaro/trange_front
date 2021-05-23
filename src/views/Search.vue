@@ -34,7 +34,15 @@
             variant="primary"
             class="btn btn-primary btn-lg mt-4"
           >
-            検索
+            <span v-if="!loading">検索</span>
+            <span
+              v-if="loading"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            >
+            </span>
+            <span v-if="loading">検索中...</span>
           </button>
         </p>
       </section>
@@ -85,7 +93,8 @@ export default defineComponent({
       maxConditionNum: 4,
       minConditionNum: 1,
       results: undefined,
-      executedSearchConditions: undefined
+      executedSearchConditions: undefined,
+      loading: false
     };
   },
   methods: {
@@ -112,10 +121,12 @@ export default defineComponent({
       for (const condition of this.searchConditions) {
         body["SearchConditions"].push(condition.getConditionInAPIForm());
       }
+      this.loading = true;
       let response = await axios.post(
         "https://iruj5ma8p6.execute-api.ap-northeast-1.amazonaws.com/prod/range_search",
         body
       );
+      this.loading = false;
       this.results = response.data;
       this.executedSearchConditions = _.cloneDeep(this.searchConditions);
     }
