@@ -11,6 +11,7 @@
         <li>{{ condition.station }}から{{ condition.upperMinute }}分</li>
       </ul>
       <h3>条件を満たす駅</h3> -->
+      <p>{{ results.Stations.length }}件</p>
       <div class="col-md-8">
         <div
           v-for="(result, resultIndex) in results.Stations"
